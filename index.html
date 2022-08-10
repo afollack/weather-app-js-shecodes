@@ -42,13 +42,6 @@
                 <button value="locate" class="searchButton" id="locate-me">Use current location</button>
 
       </div>
-    <!--   <div class="row pe-3 d-flex justify-content-end">
-         <div class="btn-group col-3" role="group" aria-label="Temp Unit Switcher">
-  <button type="button" class="btn btn-secondary btn-sm" id="cel">°C</button>
-  <button type="button" class="btn btn-secondary btn-sm" id="fahr">°F</button>
-</div>
-</div>
--->
       <div
         class="row todaysWeather d-flex align-items-center justify-content-around p-3 m-auto"
       >
@@ -62,9 +55,15 @@
             <p class="card-text" id="current-conditions">Mostly cloudy</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex">
-              <h5 class="current-temp" id="current-temp">38</h5><h5 class="current-temp">°</h5>
+            <li class="list-group-item d-flex justify-content-between">
+              <h5 class="current-temp" id="current-temp">30</h5> 
+         <div class="btn-group col-3 temp-switch" role="group" aria-label="Temp Unit Switcher">
+  <button type="button" class="btn btn-secondary btn-sm" id="cel">°C</button>
+  <button type="button" class="btn btn-secondary btn-sm" id="fahr">°F</button>
+</div>
+
             </li>
+            <li class="list-group-item"><p><i class="bi bi-cloud-drizzle"></i></i> 76%</li></p>
             <li class="list-group-item"><p><i class="bi bi-droplet"></i> 76%</li></p>
             <li class="list-group-item"><p><i class="bi bi-wind"></i> 13km/h</li></p>
           </ul>

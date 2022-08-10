@@ -58,7 +58,7 @@ function showWeatherData(response) {
   console.log(response.data.name);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = `${temperature}`;
+  temperatureElement.innerHTML = `${temperature}°`;
   let currentLocation = document.querySelector("#location");
   currentLocation.innerHTML = response.data.name;
 }
