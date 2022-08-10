@@ -66,6 +66,12 @@ function showWeatherData(response) {
   currentHumidity.innerHTML = `${response.data.main.humidity}%`;
   let currentWindSpeed = document.querySelector("#wind");
   currentWindSpeed.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
+  let currentIcon = document.querySelector("#icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchLocation(event) {

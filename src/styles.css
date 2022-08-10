@@ -62,11 +62,6 @@ p {
   border-radius: 0 5px 5px 0;
 }
 
-#current-icon {
-  font-size: 150px;
-  text-align: center;
-}
-
 #location {
   text-transform: uppercase;
   font-size: 2em;
@@ -87,6 +82,10 @@ p {
 .conditionIcon {
   font-size: 1.5em;
   margin-right: 20px;
+}
+
+.current-icon {
+  width: 150px;
 }
 .forecast {
   text-align: center;
