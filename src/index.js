@@ -51,7 +51,7 @@ let todaysDate = document.querySelector("#todays-date");
 
 todaysDate.innerHTML = `Last updated: ${day}, ${hours}:${minutes}`;
 
-//Search Section
+//Get Weather Data
 
 function showWeatherData(response) {
   temperature = Math.round(response.data.main.temp);
@@ -64,7 +64,6 @@ function showWeatherData(response) {
   temperatureElement.innerHTML = `${temperature}°`;
   currentLocation.innerHTML = response.data.name;
   currentConditions.innerHTML = response.data.weather[0].description;
-  console.log(response.data);
   currentHumidity.innerHTML = `${response.data.main.humidity}%`;
   currentWindSpeed.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
   currentIcon.setAttribute(
@@ -74,22 +73,29 @@ function showWeatherData(response) {
   currentIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
-function searchLocation(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#location-search-input");
+//Search
+
+function searchLocation(city) {
   let apiKey = "c77c1ca17d20c46264d7b3958f6293e6";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=`;
+  axios
+    .get(`${apiUrl}${city}&units=${units}&appid=${apiKey}`)
+    .then(showWeatherData);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#location-search-input");
+  searchLocation(searchInput.value);
   if (searchInput.value) {
     location.innerHTML = `${searchInput.value}`;
   } else {
     alert("Please search a location!");
   }
   searchInput.value = "";
-  axios
-    .get(`${apiUrl}${location.innerHTML}&units=${units}&appid=${apiKey}`)
-    .then(showWeatherData);
 }
+
+//Get current location data
 
 function showPosition(position) {
   let latitude = position.coords.latitude;
@@ -103,11 +109,11 @@ function showPosition(position) {
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-navigator.geolocation.getCurrentPosition(showPosition);
 
 let locate = document.querySelector("#locate-me");
 
 locate.addEventListener("click", getCurrentPosition);
+
 //Celsius to Farenheit
 
 function convertFahrenheit(event) {
@@ -132,4 +138,6 @@ let temperature = null;
 
 let search = document.querySelector("#location-search");
 
-search.addEventListener("submit", searchLocation);
+search.addEventListener("submit", handleSubmit);
+
+searchLocation("New York");
