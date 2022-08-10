@@ -72,8 +72,21 @@ p {
   font-size: 2em;
 }
 
+.date-text {
+  font-size: 0.8em;
+}
+
+.description {
+  text-transform: capitalize;
+}
+
 .current-temp {
   font-size: 4em;
+}
+
+.conditionIcon {
+  font-size: 1.5em;
+  margin-right: 20px;
 }
 .forecast {
   text-align: center;

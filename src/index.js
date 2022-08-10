@@ -49,18 +49,23 @@ minutes = checkTime(minutes);
 
 let todaysDate = document.querySelector("#todays-date");
 
-todaysDate.innerHTML = `${day}, ${month} ${date} ${hours}:${minutes}`;
+todaysDate.innerHTML = `Last updated: ${day}, ${hours}:${minutes}`;
 
 //Search Section
 
 function showWeatherData(response) {
-  console.log(response.data.main.temp);
-  console.log(response.data.name);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temp");
   temperatureElement.innerHTML = `${temperature}°`;
   let currentLocation = document.querySelector("#location");
   currentLocation.innerHTML = response.data.name;
+  let currentConditions = document.querySelector("#current-conditions");
+  currentConditions.innerHTML = response.data.weather[0].description;
+  console.log(response.data);
+  let currentHumidity = document.querySelector("#humidity");
+  currentHumidity.innerHTML = `${response.data.main.humidity}%`;
+  let currentWindSpeed = document.querySelector("#wind");
+  currentWindSpeed.innerHTML = `${Math.round(response.data.wind.speed)}km/h`;
 }
 
 function searchLocation(event) {
