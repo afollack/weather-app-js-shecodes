@@ -51,6 +51,12 @@ let todaysDate = document.querySelector("#todays-date");
 
 todaysDate.innerHTML = `Last updated: ${day}, ${hours}:${minutes}`;
 
+function formatTimestamp(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 //Get Weather Data
 
 function showWeatherData(response) {
@@ -71,25 +77,43 @@ function showWeatherData(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   currentIcon.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 
 //Forecast
 
-function displayForecast() {
+function getForecast(coordinates) {
+  let apiKey = "c77c1ca17d20c46264d7b3958f6293e6";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast-group");
   let forecastHTML = `<div class="row mt-2 p-3">`;
-  let days = ["Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5)
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="card col-2 forecast border-0 p-2 m-2">
-            <i class="bi bi-sun"></i>
+            <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+        />
             <div class="card-body">
-              <h5 class="card-title">${day}</h5>
+              <h5 class="card-title">${formatTimestamp(forecastDay.dt)}</h5>
               <p class="card-text">
-                <span class="temp-forecast-max">36° </span
-                ><span class="temp-forecast-min">32°</span>
+                <span class="temp-forecast-max">${Math.round(
+                  forecastDay.temp.max
+                )}° |</span
+                ><span class="temp-forecast-min"> ${Math.round(
+                  forecastDay.temp.min
+                )}°</span>
               </p>
             </div>
           </div>`;
@@ -167,4 +191,3 @@ let search = document.querySelector("#location-search");
 search.addEventListener("submit", handleSubmit);
 
 searchLocation("New York");
-displayForecast();

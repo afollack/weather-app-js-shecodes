@@ -95,8 +95,8 @@ p {
 .temp-forecast-max {
   font-weight: bold;
 }
-.forecast i {
-  font-size: 35px;
+.forecast .card-text {
+  font-size: 1em;
 }
 
 .footer {
