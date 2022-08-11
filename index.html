@@ -27,86 +27,95 @@
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
-    <div class="container shadow p-3 m-3 rounded">
-      <div class="row p-3">
-        <form id="location-search" class="searchBar d-flex justify-content-end">
-          <input
-            type="text"
-            autocomplete="off"
-            autofocus="on"
-            placeholder="Enter a city"
-            class="p-1 locationSearch"
-            id="location-search-input"
-          />
-          <button type="submit" value="search" class="searchButton">
-            <i class="bi bi-search-heart"></i>
+    <div class="container">
+      <div class="weather-app shadow p-3 m-3 rounded mx-auto">
+        <div class="row p-3">
+          <form
+            id="location-search"
+            class="searchBar d-flex justify-content-end"
+          >
+            <input
+              type="text"
+              autocomplete="off"
+              autofocus="on"
+              placeholder="Enter a city"
+              class="p-1 locationSearch"
+              id="location-search-input"
+            />
+            <button type="submit" value="search" class="searchButton">
+              <i class="bi bi-search-heart"></i>
+            </button>
+          </form>
+        </div>
+        <div class="d-flex justify-content-end pe-3">
+          <button value="locate" class="searchButton" id="locate-me">
+            Use current location
           </button>
-        </form>
-      </div>
-      <div class="d-flex justify-content-end pe-3">
-        <button value="locate" class="searchButton" id="locate-me">
-          Use current location
-        </button>
-      </div>
-      <div
-        class="row todaysWeather d-flex align-items-center justify-content-around p-3 m-auto"
-      >
+        </div>
         <div
-          class="card border-0 currentWeather p-2 shadow"
-          style="width: 18rem"
+          class="row todaysWeather d-flex align-items-center justify-content-around p-3 m-auto"
         >
-          <div class="card-body">
-            <h5 class="card-title" id="location"></h5>
-            <p class="card-text date-text" id="todays-date"></p>
-            <p class="card-text description" id="current-conditions"></p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between">
-              <h5 class="current-temp" id="current-temp"></h5>
-              <div
-                class="btn-group col-3 temp-switch"
-                role="group"
-                aria-label="Temp Unit Switcher"
-              >
-                <button type="button" class="btn btn-secondary btn-sm" id="cel">
-                  °C
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary btn-sm"
-                  id="fahr"
+          <div
+            class="card border-0 currentWeather p-2 shadow"
+            style="width: 18rem"
+          >
+            <div class="card-body">
+              <h5 class="card-title" id="location"></h5>
+              <p class="card-text date-text" id="todays-date"></p>
+              <p class="card-text description" id="current-conditions"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between">
+                <h5 class="current-temp" id="current-temp"></h5>
+                <div
+                  class="btn-group col-3 temp-switch"
+                  role="group"
+                  aria-label="Temp Unit Switcher"
                 >
-                  °F
-                </button>
-              </div>
-            </li>
-            <li class="list-group-item d-flex">
-              <i class="bi bi-droplet conditionIcon"></i>
-              <p id="humidity"></p>
-            </li>
-            <li class="list-group-item d-flex">
-              <i class="bi bi-wind conditionIcon"></i>
-              <p id="wind"></p>
-            </li>
-          </ul>
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-sm"
+                    id="cel"
+                  >
+                    °C
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-sm"
+                    id="fahr"
+                  >
+                    °F
+                  </button>
+                </div>
+              </li>
+              <li class="list-group-item d-flex">
+                <i class="bi bi-droplet conditionIcon"></i>
+                <p id="humidity"></p>
+              </li>
+              <li class="list-group-item d-flex">
+                <i class="bi bi-wind conditionIcon"></i>
+                <p id="wind"></p>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 d-flex justify-content-center">
+            <img src="" alt="" class="current-icon" id="icon" />
+          </div>
         </div>
-        <div class="col-6 d-flex justify-content-center">
-          <img src="" alt="" class="current-icon" id="icon" />
-        </div>
-      </div>
 
-      <div class="forecastGroup" id="forecast-group"></div>
-      <div class="row">
-        <div class="footer">
-          <small>WEATHER APP 💕 Coded by Andrea Follack</small>
-          <a
-            href="https://github.com/afollack/weather-app-js-shecodes"
-            target="_blank"
-            ><i class="bi bi-github"></i
-          ></a>
-          <a href="https://www.linkedin.com/in/andreafollack/" target="_blank"
-            ><i class="bi bi-linkedin"></i
-          ></a>
+        <div class="forecastGroup" id="forecast-group"></div>
+        <div class="row">
+          <div class="footer">
+            <small>WEATHER APP 💕 Coded by Andrea Follack</small>
+            <a
+              href="https://github.com/afollack/weather-app-js-shecodes"
+              target="_blank"
+              ><i class="bi bi-github"></i
+            ></a>
+            <a href="https://www.linkedin.com/in/andreafollack/" target="_blank"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+          </div>
         </div>
       </div>
     </div>

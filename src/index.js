@@ -91,7 +91,7 @@ function getForecast(coordinates) {
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast-group");
-  let forecastHTML = `<div class="row mt-2 p-3 justify-content-center">`;
+  let forecastHTML = `<div class="row forecast-row mt-2 p-3 justify-content-center">`;
 
   forecast.forEach(function (forecastDay, index) {
     if (index < 5)
