@@ -93,7 +93,8 @@ p {
 }
 
 .temp-forecast-max {
-  font-weight: bold;
+  font-weight: 600;
+  color: #48484a;
 }
 .forecast .card-text {
   font-size: 1em;
