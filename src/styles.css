@@ -13,6 +13,9 @@
     display: block;
     margin: 0 auto;
   }
+  .social {
+    font-size: 0.75em;
+  }
 }
 
 body {
