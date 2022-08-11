@@ -73,6 +73,32 @@ function showWeatherData(response) {
   currentIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
+//Forecast
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast-group");
+  let forecastHTML = `<div class="row mt-2 p-3">`;
+  let days = ["Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="card col-2 forecast border-0 p-2 m-2">
+            <i class="bi bi-sun"></i>
+            <div class="card-body">
+              <h5 class="card-title">${day}</h5>
+              <p class="card-text">
+                <span class="temp-forecast-max">36° </span
+                ><span class="temp-forecast-min">32°</span>
+              </p>
+            </div>
+          </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //Search
 
 function searchLocation(city) {
@@ -141,3 +167,4 @@ let search = document.querySelector("#location-search");
 search.addEventListener("submit", handleSubmit);
 
 searchLocation("New York");
+displayForecast();
